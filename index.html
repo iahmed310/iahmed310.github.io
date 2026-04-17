@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Irfan Ahmed — Information Management Officer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ─── VARIABLES ────────────────────────────────────────── */
+    :root {
+      --bg:        #f8f7f4;
+      --surface:   #ffffff;
+      --navy:      #0d1b2a;
+      --teal:      #1a6b72;
+      --teal-lt:   #e6f2f3;
+      --gold:      #c8923a;
+      --muted:     #6b7280;
+      --border:    #e5e7eb;
+      --text:      #1f2937;
+      --radius:    12px;
+      --shadow:    0 4px 24px rgba(13,27,42,.08);
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ─── RESET & BASE ─────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.2; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ─── SCROLLBAR ────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 99px; }
+
+    /* ─── NAV ──────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      background: rgba(248,247,244,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(13,27,42,.1); }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--navy);
+      letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex; gap: 2rem; align-items: center;
+    }
+    .nav-links a {
+      font-size: .85rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted);
+      position: relative; transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--teal);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover::after { width: 100%; }
+    .btn-resume {
+      background: var(--navy); color: #fff !important;
+      padding: .5rem 1.2rem; border-radius: 6px;
+      font-size: .8rem !important; letter-spacing: .08em !important;
+      transition: background var(--transition) !important;
+    }
+    .btn-resume:hover { background: var(--teal) !important; }
+    .btn-resume::after { display: none !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy); transition: var(--transition); border-radius: 2px; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* ─── HERO ─────────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 2rem 4rem;
+      background: var(--navy);
+      position: relative; overflow: hidden;
+    }
+    /* geometric bg accent */
+    #home::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 550px; height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,107,114,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #home::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,146,58,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: flex; gap: 4rem; align-items: center;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(26,107,114,.2);
+      border: 1px solid rgba(26,107,114,.4);
+      color: #7dd3d9; font-size: .78rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .35rem .9rem; border-radius: 99px; margin-bottom: 1.5rem;
+    }
+    .hero-badge i { font-size: .7rem; }
+    .hero-text h1 {
+      font-size: clamp(2.6rem,5vw,4rem);
+      color: #fff; font-weight: 600; margin-bottom: .5rem;
+    }
+    .hero-text h1 span { color: #7dd3d9; }
+    .hero-headline {
+      font-size: clamp(1rem,2vw,1.2rem);
+      color: rgba(255,255,255,.6);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300; margin-bottom: 1.8rem;
+      letter-spacing: .02em;
+    }
+    .hero-desc {
+      font-size: 1rem; color: rgba(255,255,255,.75);
+      max-width: 560px; line-height: 1.8; margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--teal); color: #fff;
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-weight: 500; font-size: .9rem;
+      transition: all var(--transition);
+    }
+    .btn-primary:hover { background: #1f8089; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26,107,114,.4); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85);
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-weight: 500; font-size: .9rem;
+      transition: all var(--transition);
+    }
+    .btn-outline:hover { border-color: #7dd3d9; color: #7dd3d9; }
+
+    .hero-stats {
+      flex-shrink: 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .stat-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 1.4rem; text-align: center;
+      backdrop-filter: blur(6px);
+      transition: transform var(--transition);
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 700; color: #7dd3d9;
+      line-height: 1;
+    }
+    .stat-label { font-size: .75rem; color: rgba(255,255,255,.5); letter-spacing: .08em; text-transform: uppercase; margin-top: .3rem; }
+
+    /* ─── SECTION WRAPPER ──────────────────────────────────── */
+    section { padding: 5.5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-tag {
+      display: inline-block;
+      font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--teal); font-weight: 600;
+      background: var(--teal-lt);
+      padding: .3rem .8rem; border-radius: 99px;
+      margin-bottom: .8rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.9rem,3.5vw,2.8rem);
+      color: var(--navy); font-weight: 600;
+    }
+    .section-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      border-radius: 99px; margin: 1rem auto 0;
+    }
+
+    /* ─── ABOUT ────────────────────────────────────────────── */
+    #about { background: var(--surface); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start;
+    }
+    .about-avatar-block { position: relative; }
+    .about-avatar {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 700; color: rgba(255,255,255,.9);
+      letter-spacing: -.02em;
+      box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+    }
+    .about-avatar::after {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.08)'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .about-badge-pill {
+      position: absolute; bottom: -1rem; right: -1rem;
+      background: var(--gold); color: #fff;
+      padding: .6rem 1rem; border-radius: 8px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+      box-shadow: 0 4px 16px rgba(200,146,58,.4);
+      text-align: center; line-height: 1.3;
+    }
+    .about-content h3 {
+      font-size: 1.6rem; color: var(--navy); margin-bottom: 1rem;
+    }
+    .about-content p { color: var(--muted); margin-bottom: 1rem; font-size: .95rem; }
+    .about-content p:last-of-type { margin-bottom: 1.8rem; }
+    .about-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-bottom: 2rem;
+    }
+    .info-item {
+      display: flex; align-items: flex-start; gap: .7rem;
+    }
+    .info-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--teal-lt);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); font-size: .8rem; flex-shrink: 0;
+    }
+    .info-item strong { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .info-item span { font-size: .9rem; color: var(--navy); font-weight: 500; }
+    .strengths-list {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .strength-tag {
+      background: var(--teal-lt); color: var(--teal);
+      padding: .3rem .8rem; border-radius: 99px;
+      font-size: .8rem; font-weight: 500;
+      border: 1px solid rgba(26,107,114,.15);
+    }
+
+    /* ─── SKILLS ───────────────────────────────────────────── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem;
+    }
+    .skill-category {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 2rem; box-shadow: var(--shadow);
+      border-top: 3px solid var(--teal);
+      transition: transform var(--transition);
+    }
+    .skill-category:hover { transform: translateY(-4px); }
+    .skill-category h4 {
+      font-size: 1.1rem; color: var(--navy); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .skill-category h4 i { color: var(--teal); }
+    .skill-item { margin-bottom: 1rem; }
+    .skill-item:last-child { margin-bottom: 0; }
+    .skill-row {
+      display: flex; justify-content: space-between;
+      margin-bottom: .4rem; font-size: .88rem;
+    }
+    .skill-name { font-weight: 500; color: var(--text); }
+    .skill-level { color: var(--muted); font-size: .8rem; }
+    .skill-bar {
+      height: 5px; background: var(--border); border-radius: 99px; overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, var(--teal), #2da0a8);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .8s cubic-bezier(.4,0,.2,1);
+    }
+    .skill-fill.animated { transform: scaleX(1); }
+    .soft-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .soft-tag {
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); padding: .4rem .9rem;
+      border-radius: 99px; font-size: .82rem;
+      display: flex; align-items: center; gap: .4rem;
+      transition: all var(--transition);
+    }
+    .soft-tag:hover { background: var(--teal-lt); border-color: var(--teal); color: var(--teal); }
+    .soft-tag i { font-size: .75rem; color: var(--teal); }
+
+    /* ─── EXPERIENCE ───────────────────────────────────────── */
+    #experience { background: var(--surface); }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 18px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--teal), var(--border));
+    }
+    .timeline-item {
+      display: flex; gap: 2rem; margin-bottom: 2.5rem;
+      padding-left: .5rem;
+    }
+    .timeline-dot {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: var(--surface);
+      border: 2px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); font-size: .85rem;
+      position: relative; z-index: 1;
+      transition: all var(--transition);
+    }
+    .timeline-item:hover .timeline-dot {
+      background: var(--teal); color: #fff;
+    }
+    .timeline-content {
+      flex: 1; background: var(--bg);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; transition: box-shadow var(--transition);
+    }
+    .timeline-item:hover .timeline-content { box-shadow: var(--shadow); }
+    .timeline-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem; margin-bottom: .8rem; flex-wrap: wrap;
+    }
+    .timeline-title h4 { font-size: 1.05rem; color: var(--navy); font-weight: 600; }
+    .timeline-title .org {
+      font-size: .82rem; color: var(--teal); font-weight: 500; margin-top: .2rem;
+    }
+    .timeline-date {
+      background: var(--teal-lt); color: var(--teal);
+      padding: .25rem .7rem; border-radius: 99px;
+      font-size: .75rem; font-weight: 600; white-space: nowrap;
+      border: 1px solid rgba(26,107,114,.2);
+    }
+    .timeline-content ul { padding-left: 1rem; }
+    .timeline-content ul li {
+      list-style: disc; font-size: .88rem; color: var(--muted);
+      margin-bottom: .4rem; padding-left: .3rem;
+    }
+
+    /* ─── PROJECTS ─────────────────────────────────────────── */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr)); gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 1.8rem; border: 1px solid var(--border);
+      box-shadow: var(--shadow); position: relative; overflow: hidden;
+      transition: all var(--transition);
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(13,27,42,.12); }
+    .project-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: var(--teal-lt); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; margin-bottom: 1rem;
+    }
+    .project-card h4 { font-size: 1rem; color: var(--navy); margin-bottom: .6rem; font-weight: 600; }
+    .project-card p { font-size: .86rem; color: var(--muted); line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .project-tag {
+      background: var(--bg); color: var(--muted);
+      font-size: .72rem; padding: .2rem .6rem;
+      border-radius: 99px; border: 1px solid var(--border);
+    }
+
+    /* ─── CERTIFICATIONS ───────────────────────────────────── */
+    #certifications { background: var(--navy); }
+    #certifications .section-header h2 { color: #fff; }
+    #certifications .section-tag { background: rgba(26,107,114,.3); color: #7dd3d9; }
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1rem;
+    }
+    .cert-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      display: flex; align-items: flex-start; gap: .8rem;
+      transition: all var(--transition);
+    }
+    .cert-card:hover {
+      background: rgba(26,107,114,.2);
+      border-color: rgba(26,107,114,.4);
+      transform: translateY(-2px);
+    }
+    .cert-card i { color: var(--gold); font-size: 1.1rem; margin-top: .15rem; flex-shrink: 0; }
+    .cert-card span { font-size: .85rem; color: rgba(255,255,255,.8); line-height: 1.4; }
+
+    /* ─── EDUCATION ────────────────────────────────────────── */
+    #education { background: var(--surface); }
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem;
+    }
+    .edu-card {
+      background: var(--bg); border-radius: var(--radius);
+      padding: 1.8rem; border: 1px solid var(--border);
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      transition: all var(--transition);
+    }
+    .edu-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+    .edu-icon {
+      width: 50px; height: 50px; border-radius: 12px; flex-shrink: 0;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      color: #7dd3d9; font-size: 1.2rem;
+    }
+    .edu-degree { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
+    .edu-school { font-size: .88rem; color: var(--teal); font-weight: 500; margin-bottom: .3rem; }
+    .edu-year {
+      display: inline-block; font-size: .75rem;
+      background: var(--teal-lt); color: var(--teal);
+      padding: .15rem .6rem; border-radius: 99px;
+    }
+    .edu-status {
+      display: inline-block; font-size: .75rem; margin-left: .4rem;
+      background: rgba(200,146,58,.12); color: var(--gold);
+      padding: .15rem .6rem; border-radius: 99px;
+      border: 1px solid rgba(200,146,58,.2);
+    }
+
+    /* ─── CONTACT ──────────────────────────────────────────── */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
+    }
+    .contact-info h3 { font-size: 1.6rem; color: var(--navy); margin-bottom: 1rem; }
+    .contact-info p { color: var(--muted); font-size: .94rem; margin-bottom: 2rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+    .contact-item:hover { border-color: var(--teal); transform: translateX(5px); }
+    .contact-item-icon {
+      width: 40px; height: 40px; border-radius: 9px;
+      background: var(--teal-lt);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); font-size: .9rem; flex-shrink: 0;
+    }
+    .contact-item-text strong { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+    .contact-item-text a, .contact-item-text span { font-size: .9rem; color: var(--navy); font-weight: 500; }
+    .contact-item-text a:hover { color: var(--teal); }
+
+    /* Form */
+    .contact-form {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 2rem; border: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .contact-form h4 { font-size: 1.2rem; color: var(--navy); margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: .4rem; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: .7rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: .9rem; color: var(--text);
+      background: var(--bg); outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(26,107,114,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .btn-send {
+      width: 100%; padding: .85rem;
+      background: var(--navy); color: #fff; border: none;
+      border-radius: 8px; font-size: .95rem; font-weight: 500;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      transition: all var(--transition);
+    }
+    .btn-send:hover { background: var(--teal); transform: translateY(-2px); }
+    .form-success {
+      display: none; text-align: center; padding: 1.5rem;
+      color: var(--teal); font-weight: 500;
+    }
+
+    /* ─── AWARDS BANNER ────────────────────────────────────── */
+    .awards-strip {
+      background: linear-gradient(135deg, var(--gold) 0%, #e6a84a 100%);
+      padding: 2.5rem 2rem;
+    }
+    .awards-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; gap: 3rem; align-items: center; justify-content: center; flex-wrap: wrap;
+    }
+    .award-item {
+      display: flex; align-items: center; gap: 1rem; color: #fff;
+    }
+    .award-item i { font-size: 1.6rem; opacity: .9; }
+    .award-item strong { display: block; font-size: 1rem; }
+    .award-item span { font-size: .82rem; opacity: .85; }
+
+    /* ─── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,.5);
+      text-align: center; padding: 2rem;
+      font-size: .82rem;
+    }
+    footer a { color: #7dd3d9; }
+
+    /* ─── FADE-IN ANIMATION ────────────────────────────────── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: fixed; inset: 0; top: 64px; background: var(--bg); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 998; }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.1rem; }
+      .hamburger { display: flex; }
+      .hero-inner { flex-direction: column; gap: 2rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; width: 100%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-avatar { aspect-ratio: 3/2; font-size: 3rem; }
+      .about-badge-pill { right: 0; }
+      .about-info-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .timeline::before { left: 14px; }
+      .timeline-item { gap: 1rem; }
+      .timeline-dot { width: 30px; height: 30px; font-size: .75rem; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 3.5rem 1.2rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .stat-card { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Irfan<span>.</span></a>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <a href="Irfan_Ahmed_Resume.pdf" download class="btn-resume"><i class="fas fa-download"></i> Resume</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+      <div class="hero-badge">
+        <i class="fas fa-circle-dot"></i> Available for Opportunities
+      </div>
+      <h1>Irfan <span>Ahmed</span></h1>
+      <p class="hero-headline">Information Management Officer &nbsp;·&nbsp; Data Analyst &nbsp;·&nbsp; GIS Specialist</p>
+      <p class="hero-desc">
+        Humanitarian data professional with <strong style="color:#7dd3d9">7+ years</strong> of experience driving evidence-based
+        decision-making across UNICEF Health, Nutrition, WASH, and Child Protection programmes. 
+        Building dashboards and data systems that save lives.
+      </p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-in">
+      <div class="stat-card">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years at UNICEF</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Key Projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">About Me</span>
+      <h2>The Person Behind the Data</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-avatar-block">
+        <div class="about-avatar">IA</div>
+        <div class="about-badge-pill">📍 Islamabad<br>Pakistan</div>
+      </div>
+      <div class="about-content">
+        <h3>Turning complex data into clear decisions</h3>
+        <p>
+          I am an Information Management Officer with over 7 years of professional experience in the humanitarian and development sector.
+          My work spans emergency response, programme monitoring, and data system development — most significantly with UNICEF across
+          Sindh, KP, and beyond.
+        </p>
+        <p>
+          During the 2022 Sindh floods crisis, I played a key role in developing the MITS portal — a single-screen window that
+          consolidated all flood response activities for UNICEF across the province. My expertise lies in transforming raw, complex
+          programme data into actionable dashboards and frameworks that empower field teams and senior management alike.
+        </p>
+        <p>
+          I am passionate about leveraging technology and data to drive impactful humanitarian outcomes, and I thrive in
+          dynamic, multicultural environments.
+        </p>
+        <div class="about-info-grid">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email</strong>
+              <span>irfanahmed348034@gmail.com</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <strong>Phone</strong>
+              <span>0306-2771611</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com/in/iahmedmande/" target="_blank" style="color:var(--teal)">iahmedmande</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-language"></i></div>
+            <div>
+              <strong>Languages</strong>
+              <span>Pashto · Urdu · English</span>
+            </div>
+          </div>
+        </div>
+        <div class="strengths-list">
+          <span class="strength-tag">Emergency Response</span>
+          <span class="strength-tag">Data-Driven Planning</span>
+          <span class="strength-tag">Dashboard Development</span>
+          <span class="strength-tag">Cross-functional Teams</span>
+          <span class="strength-tag">Capacity Building</span>
+          <span class="strength-tag">Donor Reporting</span>
+          <span class="strength-tag">ISD Implementation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ══════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Skills</span>
+      <h2>Technical & Professional Expertise</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid fade-in">
+
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-bar"></i> Data & Analytics</h4>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">MS Excel (Advanced)</span><span class="skill-level">Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">SQL</span><span class="skill-level">Proficient</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Python</span><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.70"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-map-marked-alt"></i> GIS & Field Tools</h4>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">GIS Mapping</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">KoboToolbox</span><span class="skill-level">Advanced</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">Google Forms</span><span class="skill-level">Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.93"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span class="skill-name">MITS / ERPTS Systems</span><span class="skill-level">Expert</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="--w:.95"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4><i class="fas fa-users"></i> Soft Skills</h4>
+        <div class="soft-tags">
+          <span class="soft-tag"><i class="fas fa-check"></i> Team Leadership</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Communication</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Coordination</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Adaptability</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Problem Solving</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Task Management</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Collaboration</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Report Writing</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Capacity Building</span>
+          <span class="soft-tag"><i class="fas fa-check"></i> Strategic Planning</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Experience</span>
+      <h2>Professional Journey</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="timeline fade-in">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fas fa-briefcase"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">
+              <h4>Information Management Officer — UNICEF ISD</h4>
+              <div class="org">ZMK &amp; Co (Third Party) · South KP</div>
+            </div>
+            <span class="timeline-date">July 2025 – Present</span>
+          </div>
+          <ul>
+            <li>Compile, clean, and analyze data from reports and surveys to support evidence-based decision-making.</li>
+            <li>Map healthcare facilities, outreach teams, and programme assets to identify service gaps and priority areas.</li>
+            <li>Develop and maintain an integrated ISD dashboard for all partners operating in South KP.</li>
+            <li>Contribute to the ISD M&E framework including indicators, reporting tools, and accountability mechanisms.</li>
+            <li>Conduct capacity-building sessions for field staff on ISD approach, data quality, and dashboard use.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fas fa-briefcase"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">
+              <h4>Information Management Officer — UNICEF ISD KP</h4>
+              <div class="org">MicroMerger (Third Party) · South KP</div>
+            </div>
+            <span class="timeline-date">Dec 2024 – May 2025</span>
+          </div>
+          <ul>
+            <li>Compiled ISD data across sections weekly, monthly, and campaign-wise to support strategic planning.</li>
+            <li>Established baseline data for all sections to monitor progress and evaluate programme impact.</li>
+            <li>Prepared programme status reports, presentations, and briefing notes for donor missions and annual reviews.</li>
+            <li>Coordinated with partners to build capacity and enhance data-sharing practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fas fa-chart-line"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">
+              <h4>Data Analyst — UNICEF Flood Response Sindh</h4>
+              <div class="org">Ask Development (Third Party) · Sindh</div>
+            </div>
+            <span class="timeline-date">June 2023 – Nov 2024</span>
+          </div>
+          <ul>
+            <li>Maintained Section data on the 5W matrix for Health, Nutrition, and WASH sectors ensuring timely reporting.</li>
+            <li>Produced comprehensive weekly and monthly progress reports for donor reporting and programme planning.</li>
+            <li>Provided extensive MITS training to partners across Sindh, improving Health, Nutrition, and WASH reporting quality.</li>
+            <li>Regularly updated ERPTS, contributing to Sitrep and situation analysis for country-level stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fas fa-shield-alt"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">
+              <h4>Monitoring &amp; Quality Assurance Officer — UNICEF Sindh</h4>
+              <div class="org">Ask Development (Third Party) · Sindh</div>
+            </div>
+            <span class="timeline-date">Jan 2023 – May 2023</span>
+          </div>
+          <ul>
+            <li>Designed and implemented a robust M&E plan to assess project progress and data quality for birth registration.</li>
+            <li>Conducted Data Quality Assessment (DQA) visits to health facilities and Union Councils.</li>
+            <li>Created a Power BI dashboard for real-time monitoring of achievements enabling data-driven decision-making.</li>
+            <li>Collaborated with IMU Unit in developing and implementing the MITS for Sindh.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fas fa-hands-helping"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">
+              <h4>Data Management Volunteer — UNICEF Sindh Flood Response</h4>
+              <div class="org">UNICEF · Sindh (2022 Crisis)</div>
+            </div>
+            <span class="timeline-date">Sep 2022 – Dec 2022</span>
+          </div>
+          <ul>
+            <li>Played a pivotal role in the creation of the MITS portal, consolidating all flood response activities on one platform.</li>
+            <li>Supported partners in uploading data to MITS, ensuring seamless data integration for all stakeholders.</li>
+            <li>Facilitated data-sharing coordination across sectors for a comprehensive view of the flood response landscape.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"><i class="fas fa-database"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="timeline-title">
+              <h4>District Liaison Officer — UNICEF Polio Project</h4>
+              <div class="org">MicroMerger Data Support Center</div>
+            </div>
+            <span class="timeline-date">July 2018 – Dec 2022</span>
+          </div>
+          <ul>
+            <li>Ensured data integrity and accuracy through regular data quality checks and validation processes.</li>
+            <li>Participated in DEOC meetings presided over by the Deputy Commissioner, presenting analyses and reports.</li>
+            <li>Collaborated with field staff to identify areas for improvement and implement efficiency strategies.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ════════════════════════════════════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Projects &amp; Achievements</span>
+      <h2>Work That Made an Impact</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="projects-grid fade-in">
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-server"></i></div>
+        <h4>MITS Portal — Sindh Flood Response 2022</h4>
+        <p>Co-developed the Management Information Tracking System portal that consolidated all UNICEF flood response activities in Sindh onto a single real-time monitoring and reporting platform during the 2022 crisis.</p>
+        <div class="project-tags">
+          <span class="project-tag">Emergency Response</span>
+          <span class="project-tag">Data Systems</span>
+          <span class="project-tag">UNICEF</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-child"></i></div>
+        <h4>Mass MUAC Application</h4>
+        <p>Contributed to developing the Mass MUAC application for UNICEF's Nutrition Section to track each child's nutrition status, detailing supplies received and quantities for comprehensive child-wise monitoring.</p>
+        <div class="project-tags">
+          <span class="project-tag">Nutrition</span>
+          <span class="project-tag">Mobile App</span>
+          <span class="project-tag">Child Health</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-boxes"></i></div>
+        <h4>Supply Management System — Nutrition</h4>
+        <p>Built a supply management system for the Nutrition section to track supplies provided to UNICEF implementing partners, monitor progress, and assess current supply capacity of each partner.</p>
+        <div class="project-tags">
+          <span class="project-tag">Supply Chain</span>
+          <span class="project-tag">Nutrition</span>
+          <span class="project-tag">Excel</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-calculator"></i></div>
+        <h4>Nutrition Caseload Calculator</h4>
+        <p>Developed a one-click calculator estimating supply needs and costs based on target population, coverage, SAM, MAM, and GAM rates — enabling quick and efficient planning for nutrition interventions.</p>
+        <div class="project-tags">
+          <span class="project-tag">Planning Tool</span>
+          <span class="project-tag">Nutrition</span>
+          <span class="project-tag">Automation</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-clock"></i></div>
+        <h4>Smart Attendance Management System</h4>
+        <p>Developed and open-sourced a Smart Attendance System using Google Apps Script featuring real-time geo-tagged tracking, automated holiday integration, duplicate prevention, and user authorization — fully cloud-based with zero maintenance.</p>
+        <div class="project-tags">
+          <span class="project-tag">Google Apps Script</span>
+          <span class="project-tag">Open Source</span>
+          <span class="project-tag">Cloud</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-baby"></i></div>
+        <h4>Birth Registration Project — Child Protection</h4>
+        <p>Spearheaded UNICEF's Birth Registration Project within the Child Protection section, designing the M&E plan, conducting DQA visits, and building Power BI dashboards for real-time monitoring of registration achievements.</p>
+        <div class="project-tags">
+          <span class="project-tag">Child Protection</span>
+          <span class="project-tag">Power BI</span>
+          <span class="project-tag">M&E</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARDS ══════════════════════════════════════════════════ -->
+<div class="awards-strip fade-in">
+  <div class="awards-inner">
+    <div class="award-item">
+      <i class="fas fa-medal"></i>
+      <div>
+        <strong>Letter of Appreciation</strong>
+        <span>Exemplary contributions and outstanding performance</span>
+      </div>
+    </div>
+    <div class="award-item">
+      <i class="fas fa-award"></i>
+      <div>
+        <strong>Certificate of Excellence</strong>
+        <span>Remarkable achievements and dedication to excellence</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CERTIFICATIONS ══════════════════════════════════════════ -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Certifications</span>
+      <h2>Continuous Learning</h2>
+      <div class="section-divider" style="background: linear-gradient(90deg, #7dd3d9, var(--gold));"></div>
+    </div>
+    <div class="cert-grid fade-in">
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Data Analysis &amp; Visualization with Power BI — Microsoft</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Excel Skills Job Simulation</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Google Analytics Certification</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Introduction to the Role of Information Management Officer — UNICEF</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Coordination, Reporting, Monitoring &amp; Data Management in ISD — UNICEF</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Business Intelligence — Crux International Canada</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Basics of Python — NED University</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Basics of Machine Learning — NED University</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Accountability to Affected People &amp; SBC in Emergencies — UNICEF</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Prevention Against Sexual Exploitation and Abuse — UNICEF</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Introduction to Computers &amp; Office Productivity Software</span></div>
+      <div class="cert-card"><i class="fas fa-certificate"></i><span>Office Automation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ══════════════════════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Education</span>
+      <h2>Academic Background</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="edu-grid fade-in">
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <div class="edu-degree">MS in Project Management</div>
+          <div class="edu-school">Bahria University Islamabad, Pakistan</div>
+          <span class="edu-year">2026</span>
+          <span class="edu-status">In Progress</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-robot"></i></div>
+        <div>
+          <div class="edu-degree">PGD — Data Science &amp; Artificial Intelligence</div>
+          <div class="edu-school">Bahria University Islamabad, Pakistan</div>
+          <span class="edu-year">2025</span>
+          <span class="edu-status">In Progress</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon"><i class="fas fa-flask"></i></div>
+        <div>
+          <div class="edu-degree">BS in Natural Sciences</div>
+          <div class="edu-school">University of Karachi, Pakistan</div>
+          <span class="edu-year">2022</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Contact</span>
+      <h2>Let's Connect</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <h3>Open to collaboration &amp; new opportunities</h3>
+        <p>Whether it's a project, a role in the humanitarian sector, or a data challenge — I'd love to hear from you.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <a href="mailto:irfanahmed348034@gmail.com">irfanahmed348034@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-item-text">
+              <strong>Phone</strong>
+              <span>0306-2771611</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fab fa-linkedin"></i></div>
+            <div class="contact-item-text">
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com/in/iahmedmande/" target="_blank">linkedin.com/in/iahmedmande</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-item-text">
+              <strong>Location</strong>
+              <span>Islamabad, Pakistan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h4>Send a Message</h4>
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="fname" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" id="femail" placeholder="john@example.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="fsubject" placeholder="Project Collaboration">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="fmessage" placeholder="Tell me about your project or opportunity..."></textarea>
+          </div>
+          <button class="btn-send" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <i class="fas fa-check-circle" style="font-size:2rem;margin-bottom:.5rem;display:block"></i>
+          Thanks! Your message has been prepared. Please send it via email.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
+<footer>
+  <p>© 2025 Irfan Ahmed · Built with care · <a href="https://linkedin.com/in/iahmedmande/" target="_blank">LinkedIn</a></p>
+</footer>
+
+<!-- ═══ JAVASCRIPT ═════════════════════════════════════════════ -->
+<script>
+  // ── Navbar scroll shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ── Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // ── Fade-in on scroll
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ── Skill bar animation
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach((fill, i) => {
+          const w = fill.style.getPropertyValue('--w') || '.8';
+          fill.style.width = '0';
+          setTimeout(() => {
+            fill.style.transition = `width .9s cubic-bezier(.4,0,.2,1) ${i * .1}s`;
+            fill.style.width = (parseFloat(w) * 100) + '%';
+          }, 200);
+        });
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-category').forEach(el => skillObserver.observe(el));
+
+  // ── Contact form — opens mail client
+  function sendMessage() {
+    const name    = document.getElementById('fname').value.trim();
+    const email   = document.getElementById('femail').value.trim();
+    const subject = document.getElementById('fsubject').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    window.location.href = `mailto:irfanahmed348034@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent(body)}`;
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // ── Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 100;
+    sections.forEach(sec => {
+      const link = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+      if (!link) return;
+      const inView = y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight;
+      link.style.color = inView ? 'var(--teal)' : '';
+    });
+  });
+</script>
+</body>
+</html>
